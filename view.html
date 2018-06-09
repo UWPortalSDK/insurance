@@ -1,0 +1,88 @@
+<!-- Primary template that will get shown when widget loads -->
+<script type="text/ng-template" id="ohipMain.html"> 
+	<widget-row ng-repeat="item in items" clickable ng-click="showDetails(item)">
+		<widget-cell fill>
+			<span class="itemName">{{item.title}}</span>
+			<span ng-repeat= "tag in item.tags" class="label label-success">
+				{{tag}}
+			</span>
+		</widget-cell>
+		<widget-cell>
+			<widget-icon name="angle-right"></widget-icon>
+		</widget-cell>
+	</widget-row>
+
+</script>
+
+<!-- This template gets shown when user clicks one of the items in the list -->
+<script type="text/ng-template" id="ohipDetails.html"> 
+	<!-- 'wr' and 'wc' are short for 'widget-row' and 'widget-cell' -->
+	<wr>
+		<wc><h2>{{detailsItem.title}}</h2></wc>
+	</wr>
+	<wr><wc><span ng-repeat= "tag in detailsItem.tags" class="label label-success">{{tag}}</span></wc></wr>
+	<wr><wc>
+        <div class="pDetails">
+            <a href="{{detailsItem.details}}">{{detailsItem.details.linkText}}</a>
+        </div>    
+     </wc></wr>
+</script>
+
+
+<script type="text/ng-template" id="sccView.html"> 
+<wr>
+    <button type="submit">Upload Document</button>
+    </wr>
+</script>
+
+<script type="text/ng-template" id="HealthHistoryView.html"> 
+<wr>
+<textarea rows="4" cols="50">
+Write your Health history here(Previous diseases or injuries). 
+</textarea>
+ </wr>
+</script>
+
+
+<script type="text/ng-template" id="appointmentView.html"> 
+	<!-- 'wr' and 'wc' are short for 'widget-row' and 'widget-cell' -->
+    <wr> 
+    <label for="inputDate" class="col-sm-2 col-form-label">Date: </label> 
+        <form action="" name="someform">
+<select id="daydropdown">
+    <option ng-repeat = "day in daytext"> {{day}} </option>
+            </select> 
+<select id="monthdropdown"> 
+    <option ng-repeat = "month in monthtext"> {{month}} </option>
+            </select> 
+<select id="yeardropdown">
+    <option ng-repeat = "year in yeartext"> {{year}} </option>
+            </select> 
+</form>
+<!--
+<script type="text/javascript">
+
+//populatedropdown(id_of_day_select, id_of_month_select, id_of_year_select)
+window.onload=function(){
+populatedropdown("daydropdown", "monthdropdown", "yeardropdown")
+}
+</script>
+  -->  
+         
+    </wr>
+    <wr> 
+    <label for="inputTime" class="col-sm-2 col-form-label">Time: </label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="inputTime" placeholder="Time">
+    </div>
+    </wr>
+    <wr> 
+    <label for="inputVenue" class="col-sm-2 col-form-label">Venue: </label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="inputVenue" placeholder="Venue">
+    </div>
+    </wr>
+    <wr>
+    <button type="submit">UPDATE</button>
+    </wr>
+</script>
